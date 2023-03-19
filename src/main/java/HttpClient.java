@@ -28,6 +28,9 @@ public class HttpClient {
         return httpClient;
     }
 
+    /**
+     * You can change URL in testData.properties
+     */
     public static String initURL() {
         FileInputStream fis;
         Properties property = new Properties();
@@ -42,6 +45,9 @@ public class HttpClient {
         return URL;
     }
 
+    /**
+     * You can change ApiKey in testData.properties
+     */
     public static String initApiKey() {
         FileInputStream fis;
         Properties property = new Properties();
@@ -136,7 +142,7 @@ public class HttpClient {
 
     public static void close() throws IOException {
         initHttpClient().close();
-        log.info("httpClient has closed");
+        log.info("HTTP Client has closed");
     }
 }
 

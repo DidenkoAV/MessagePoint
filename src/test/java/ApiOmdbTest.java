@@ -16,6 +16,12 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 
 public class ApiOmdbTest {
+    /**
+     * I've changed first case pretty similar because of I didn't see "The Stem Journals" and "Activision: STEM ..."
+     * in response.
+     * Please read in README.md "test description".
+     */
+
     //static String TEST_DATA3_CASE1 = "The STEM Journals";
     //static String TEST_DATA4_CASE1 = "Activision: STEM - in the Videogame Industry";
     static String ALLURE_APPLICATION_JSON = "application/json";

@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Hooks {
 
     @BeforeClass
-    public void openHttpClient(){
+    public void openHttpClient() {
         HttpClient.initHttpClient();
     }
 

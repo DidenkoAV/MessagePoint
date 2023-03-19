@@ -33,7 +33,6 @@ __I left the code commented out for this check and I didn't use data provider in
 __For validate JSON values I use serialization and streams.__
 
 ### TODO list:
-__Add Hooks, for example move HttpClient.close().__
 
 __If test class will grow, move data provider methods to another class.__
 
