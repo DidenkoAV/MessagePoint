@@ -2,6 +2,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.json.JSONObject;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,16 +20,16 @@ public class ApiOmdbTest {
     //static String TEST_DATA3_CASE1 = "The STEM Journals";
     //static String TEST_DATA4_CASE1 = "Activision: STEM - in the Videogame Industry";
 
-
-    @DataProvider(name="data-provider-test1")
+    @DataProvider(name="data-provider-searchMethodTest")
     public Object[][] dataProviderMethod() throws IOException {
         FileInputStream fis = new FileInputStream("src/main/resources/testData.properties");
         Properties properties = new Properties();
         properties.load(fis);
         return new Object[][] {{properties.getProperty("searchInput"), properties.getProperty("title"),
-        properties.getProperty("title1")}};
+                properties.getProperty("title1")}};
     }
-    @DataProvider(name="data-provider-test2")
+
+    @DataProvider(name="data-provider-searchByIdMethodTest")
     public Object[][] dataProviderMethod2() throws IOException {
         FileInputStream fis = new FileInputStream("src/main/resources/testData.properties");
         Properties properties = new Properties();
@@ -36,7 +37,8 @@ public class ApiOmdbTest {
         return new Object[][] {{properties.getProperty("searchInput"), properties.getProperty("title"),
                 properties.getProperty("released"), properties.getProperty("director")}};
     }
-    @DataProvider(name="data-provider-test3")
+
+    @DataProvider(name="data-provider-searchByTitleMethodTest")
     public Object[][] dataProviderMethod3() throws IOException {
         FileInputStream fis = new FileInputStream("src/main/resources/testData.properties");
         Properties properties = new Properties();
@@ -45,8 +47,7 @@ public class ApiOmdbTest {
                  properties.getProperty("runtime")}};
     }
 
-
-    @Test(dataProvider = "data-provider-test1")
+    @Test(dataProvider = "data-provider-searchMethodTest")
     @Description("Test the get of a 'search' request with a value of 'stem' ")
     public void searchMethodTest(String search, String title, String title1) throws Exception {
         HttpClient httpClient = new HttpClient();
@@ -67,7 +68,7 @@ public class ApiOmdbTest {
         //Assert.assertTrue(rootSearch.search.stream().count()>30);
     }
 
-    @Test(dataProvider = "data-provider-test2")
+    @Test(dataProvider = "data-provider-searchByIdMethodTest")
     @Description("Test 'search by id' method'")
     public void checkReleasedAndDirectorSearchByIdMethodTest(String search, String title, String released, String director) throws Exception {
         HttpClient httpClient = new HttpClient();
@@ -93,7 +94,7 @@ public class ApiOmdbTest {
         Assert.assertTrue(searchByIdPojo.director.equals(director));
     }
 
-    @Test(dataProvider = "data-provider-test3")
+    @Test(dataProvider = "data-provider-searchByTitleMethodTest")
     @Description("Test 'search by title' method'")
     public void searchByTitleMethodTest(String searchByTitle, String plot,String runtime) throws Exception {
         HttpClient httpClient = new HttpClient();

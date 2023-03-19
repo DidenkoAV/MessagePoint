@@ -20,10 +20,8 @@ public class HttpClient {
 
     public static void main(String[] args) throws Exception {
         HttpClient httpClient1 = new HttpClient();
-
         try {
             httpClient1.searchGetRequest("STEM");
-
         } finally {
             httpClient1.close();
         }
@@ -46,15 +44,12 @@ public class HttpClient {
             HttpEntity entity = response.getEntity();
             log.info("Response headers: " + entity.getContentType());
 
-
             if (entity != null) {
                  result = EntityUtils.toString(entity);
                  log.info("Response body: " + result);
             }
         } return result;
     }
-
-
 
     public String getByIdGetRequest(String id) throws URISyntaxException, IOException {
         HttpGet request = new HttpGet(URL);
@@ -72,11 +67,9 @@ public class HttpClient {
             HttpEntity entity = response.getEntity();
             log.info("Response headers: " + entity.getContentType());
 
-
             if (entity != null) {
                  result = EntityUtils.toString(entity);
                 log.info("Response body: " + result);
-
             }
         } return result;
     }
@@ -100,13 +93,10 @@ public class HttpClient {
             if (entity != null) {
                 result = EntityUtils.toString(entity);
                 log.info("Response body: " + result);
-
             }
         }
         return result;
     }
-
-
     private void close() throws IOException {
         httpClient.close();
         log.info("httpClient has closed");
