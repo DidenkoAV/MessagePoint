@@ -16,14 +16,17 @@ import java.util.Properties;
 public class HttpClient {
     private static final Logger log = Logger.getLogger(HttpClient.class);
     static String TEST_DATA_PROPERTIES_PATH = "src/main/resources/testData.properties";
+    private static CloseableHttpClient httpClient;
 
-    public static CloseableHttpClient initHttpClient() {
-        CloseableHttpClient httpClient = null;
+    static {
         try {
             httpClient = HttpClients.createDefault();
         } catch (Exception ex) {
             log.info("ERROR with HTTP Client init: " + ex.getMessage());
         }
+    }
+
+    public static CloseableHttpClient initHttpClient() {
         log.info("HTTP Client has opened");
         return httpClient;
     }
@@ -141,7 +144,7 @@ public class HttpClient {
     }
 
     public static void close() throws IOException {
-        initHttpClient().close();
+        httpClient.close();
         log.info("HTTP Client has closed");
     }
 }

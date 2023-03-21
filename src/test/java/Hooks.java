@@ -1,10 +1,10 @@
+import io.qameta.allure.Allure;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
 
 public class Hooks {
-
     @BeforeClass
     public void openHttpClient() {
         HttpClient.initHttpClient();

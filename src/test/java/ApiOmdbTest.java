@@ -3,6 +3,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.json.JSONObject;
 import org.junit.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pojo.SearchByIdPojo;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-public class ApiOmdbTest {
+public class ApiOmdbTest extends Hooks  {
     /**
      * I've changed first case pretty similar because of I didn't see "The Stem Journals" and "Activision: STEM ..."
      * in response.
